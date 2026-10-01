@@ -308,9 +308,348 @@
       }
     }
 
+  
+    
+    
+    /* Popup de bienvenida Ordenamiento Territorial - responsivo y sin recortes */
+    .ot-welcome-overlay{
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(5,35,24,.58);
+      backdrop-filter:blur(4px);
+    }
+    .ot-welcome-overlay.hidden{display:none}
+
+    .ot-welcome-card{
+      width:min(980px,94vw);
+      max-height:88vh;
+      background:#fff;
+      border:1px solid #dfe8e3;
+      border-radius:26px;
+      box-shadow:0 26px 72px rgba(0,0,0,.30);
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+      overflow:hidden;
+    }
+
+    .ot-welcome-video{
+      position:relative;
+      min-width:0;
+      min-height:560px;
+      overflow:hidden;
+      background:#0b2e20;
+      border-radius:25px 0 0 25px;
+    }
+    .ot-welcome-video img{
+      width:100%;
+      height:100%;
+      position:absolute;
+      inset:0;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+    .ot-welcome-video:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.56),rgba(0,0,0,.04) 58%,transparent);
+      pointer-events:none;
+    }
+
+    .ot-video-caption{
+      position:absolute;
+      left:28px;
+      right:28px;
+      bottom:28px;
+      z-index:2;
+      color:#fff;
+      text-align:left;
+    }
+    .ot-video-caption b{
+      display:block;
+      font-size:30px;
+      line-height:1.08;
+      margin-bottom:8px;
+    }
+    .ot-video-caption span{
+      font-size:14px;
+      line-height:1.4;
+      color:rgba(255,255,255,.95);
+    }
+
+    .ot-welcome-close{
+      position:absolute;
+      top:14px;
+      right:14px;
+      z-index:6;
+      width:42px;
+      height:42px;
+      border:1px solid #dfe8e3;
+      border-radius:50%;
+      background:#f3f7f5;
+      color:#38554a;
+      font-size:23px;
+      font-weight:900;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      line-height:1;
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
+    }
+
+    .ot-welcome-body{
+      padding:34px 32px 30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      min-width:0;
+      overflow:auto;
+    }
+    .ot-welcome-kicker{
+      color:#08783f;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:9px;
+    }
+    .ot-welcome-body h2{
+      margin:0 0 13px;
+      color:#0d3d2a;
+      font-size:31px;
+      line-height:1.08;
+      text-align:left;
+      padding-right:28px;
+    }
+    .ot-welcome-body p{
+      margin:0 0 18px;
+      color:#5e7167;
+      font-size:14px;
+      line-height:1.55;
+      text-align:left;
+    }
+
+    .ot-welcome-points{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:9px;
+      margin:2px 0 20px;
+    }
+    .ot-welcome-point{
+      border:1px solid #dfe8e3;
+      background:#f8fbf9;
+      border-radius:14px;
+      padding:10px 12px;
+      color:#36584a;
+      font-size:12px;
+      font-weight:700;
+      line-height:1.3;
+      display:grid;
+      grid-template-columns:48px 1fr;
+      gap:11px;
+      align-items:center;
+      text-align:left;
+    }
+    .ot-welcome-point span{
+      display:grid;
+      place-items:center;
+      width:48px;
+      height:48px;
+      border-radius:13px;
+      background:#edf7f1;
+      font-size:27px;
+      margin:0;
+    }
+    .ot-welcome-point b{
+      font-size:13px;
+      color:#173f2d;
+    }
+
+    .ot-welcome-enter{
+      width:100%;
+      min-height:50px;
+      border:0;
+      border-radius:13px;
+      background:#08783f;
+      color:#fff;
+      font-size:14px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 6px 16px rgba(8,120,63,.18);
+    }
+    .ot-welcome-enter:hover{background:#076d39}
+
+    @media(max-width:900px){
+      .ot-welcome-overlay{padding:14px}
+      .ot-welcome-card{
+        width:min(720px,96vw);
+        max-height:92vh;
+        grid-template-columns:1fr;
+        overflow:auto;
+      }
+      .ot-welcome-video{
+        min-height:280px;
+        height:280px;
+        border-radius:25px 25px 0 0;
+      }
+      .ot-welcome-video img{
+        position:absolute;
+      }
+      .ot-welcome-body{
+        padding:24px;
+        overflow:visible;
+      }
+      .ot-welcome-body h2{
+        font-size:26px;
+        padding-right:34px;
+      }
+      .ot-video-caption{
+        left:22px;
+        right:22px;
+        bottom:20px;
+      }
+      .ot-video-caption b{font-size:24px}
+    }
+
+    @media(max-width:520px){
+      .ot-welcome-overlay{padding:8px}
+      .ot-welcome-card{
+        width:calc(100vw - 16px);
+        max-height:94vh;
+        border-radius:20px;
+      }
+      .ot-welcome-video{
+        height:220px;
+        min-height:220px;
+        border-radius:19px 19px 0 0;
+      }
+      .ot-welcome-body{
+        padding:20px 18px 18px;
+      }
+      .ot-welcome-body h2{font-size:23px}
+      .ot-welcome-body p{font-size:13px}
+      .ot-welcome-point{
+        grid-template-columns:42px 1fr;
+        padding:9px 10px;
+      }
+      .ot-welcome-point span{
+        width:42px;
+        height:42px;
+        font-size:23px;
+      }
+    }
+
+  
+    /* Íconos de estudios más protagonistas */
+    .library-panel .study-icon{
+      width:74px;
+      height:74px;
+      font-size:38px;
+      border-radius:18px;
+      background:#edf7f1;
+      box-shadow:inset 0 0 0 1px #d8e9df;
+    }
+    .library-panel .study-card{
+      grid-template-columns:74px 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    @media(max-width:700px){
+      .library-panel .study-icon{
+        width:62px;
+        height:62px;
+        font-size:32px;
+      }
+      .library-panel .study-card{
+        grid-template-columns:62px 1fr;
+      }
+    }
+
+  
+    /* Animación de entrada y respiración suave del popup */
+    @keyframes otPopupEnter{
+      0%{
+        opacity:0;
+        transform:scale(.94) translateY(14px);
+      }
+      70%{
+        opacity:1;
+        transform:scale(1.015) translateY(0);
+      }
+      100%{
+        opacity:1;
+        transform:scale(1) translateY(0);
+      }
+    }
+
+    @keyframes otPopupBreathe{
+      0%,100%{
+        transform:scale(1);
+        box-shadow:0 26px 72px rgba(0,0,0,.30);
+      }
+      50%{
+        transform:scale(1.012);
+        box-shadow:0 30px 82px rgba(0,0,0,.34);
+      }
+    }
+
+    .ot-welcome-overlay:not(.hidden) .ot-welcome-card{
+      animation:
+        otPopupEnter .65s cubic-bezier(.22,.9,.32,1) both,
+        otPopupBreathe 4.8s ease-in-out .8s infinite;
+      transform-origin:center center;
+      will-change:transform,opacity,box-shadow;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .ot-welcome-overlay:not(.hidden) .ot-welcome-card{
+        animation:none;
+      }
+    }
+
   </style>
 </head>
 <body>
+
+
+<div id="otWelcome" class="ot-welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="otWelcomeTitle">
+  <div class="ot-welcome-card">
+    <div class="ot-welcome-video">
+      <img src="popup_ordenamiento.jpg" alt="Paisaje territorial de Ucayali">
+      <div class="ot-video-caption">
+        <b>Ordenamiento Territorial</b>
+        <span>Información para planificar y comprender mejor el territorio de Ucayali.</span>
+      </div>
+    </div>
+
+    <button id="otWelcomeClose" class="ot-welcome-close" type="button" aria-label="Cerrar bienvenida">×</button>
+
+    <div class="ot-welcome-body">
+      <div class="ot-welcome-kicker">GeoUcayali · Ordenamiento Territorial</div>
+      <h2 id="otWelcomeTitle">Bienvenido a Ordenamiento Territorial</h2>
+      <p>
+        Explora estudios técnicos, submodelos, información de la ZEE, mapas temáticos,
+        documentos normativos y bases geoespaciales que apoyan la planificación y gestión sostenible del territorio.
+      </p>
+
+      <div class="ot-welcome-points">
+        <div class="ot-welcome-point"><span>🗂️</span><div><b>Estudios Temáticos</b><br>Memorias, informes y análisis territoriales.</div></div>
+        <div class="ot-welcome-point"><span>🧩</span><div><b>Submodelos</b><br>Información especializada organizada por componentes.</div></div>
+        <div class="ot-welcome-point"><span>🗺️</span><div><b>ZEE</b><br>Zonificación Ecológica y Económica del departamento.</div></div>
+      </div>
+
+      <button id="otWelcomeEnter" class="ot-welcome-enter" type="button">Ingresar a Ordenamiento Territorial</button>
+    </div>
+  </div>
+</div>
+
 <main class="page">
 
   <section class="hero">
@@ -411,11 +750,16 @@
       <iframe id="mapFrame" title="Visor de mapa"></iframe>
     </div>
     <div class="viewer-note">
-      <span><b>Fuente:</b> Proyecto de Ordenamiento Territorial - Dirección de Gestión del Territorio - GOREU</span>
+      <span><b>Fuente temporal:</b> Google Drive institucional. En proceso de migración al servidor GeoUcayali.</span>
       <a id="mapDownload" class="btn ghost" target="_blank" rel="noopener">⬇ Descargar mapa</a>
     </div>
   </section>
 </main>
+
+<footer>
+  <div><span class="brand">GeoUcayali</span><br>Plataforma territorial del Gobierno Regional de Ucayali</div>
+  <div>Dirección de Gestión del Territorio · Gobierno Regional de Ucayali</div>
+</footer>
 
 <script>
 const normatives=[
@@ -425,57 +769,57 @@ const normatives=[
 ];
 
 const studies=[
-  {cls:"ZEE",group:"ZEE",study:"ZEE Ucayali",icon:"🌿",
+  {cls:"ZEE",group:"ZEE",study:"ZEE Ucayali",icon:"🗺️",
     memory:{name:"Memoria ZEE Ucayali",id:"1g8xLNwyS7I9XMK07R5Vthc44us5f2vTL"},
     map:null,
     data:{name:"Base geoespacial ZEE",id:"1claiTzjd4wzL-fOCHL8AqOqR5njCK4JQ"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"VPRN Renovables",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"VPRN Renovables",icon:"🌱",
     memory:{name:"Memoria VPRN Renovables",id:"1x6ry361o31UNLKdWzL7Kwqh11PLo1u9d"},
     map:{name:"Mapa VPRN Renovables",id:"1uQ-9N426ix9ZoTbEq0fZg8Fdfp-hreXK"},
     data:{name:"Base geoespacial",id:"1C5b1aeXFq9O7tLvdOoNO49O-fMdTXot9"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"VPRN no Renovables",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"VPRN no Renovables",icon:"⛏️",
     memory:{name:"Memoria VPRN no Renovables",id:"10HH2iGMu0bbLyXs4HGmQU_wUS4S_ERiT"},
     map:{name:"Mapa Potencial Minero Metálico y no Metálico",id:"1sWJ2ro_ILQf92Mh7dkJEswkJ-rYookU_"},
     data:{name:"Base geoespacial",id:"1AGduqTozCNW7JHc_h7aF_GhWSlF2sf9G"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Valor Bioecológico",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Valor Bioecológico",icon:"🐦",
     memory:{name:"Memoria Valor Bioecológico",id:"1lRjWtVoXfChy-VtJvnX9MLmzfSas1wnS"},
     map:{name:"Mapa Valor Bioecológico",id:"1mTYNfUOPQUDW883ye8KitRN8h6DByiDU"},
     data:{name:"Base geoespacial",id:"1xVp45ilc_dHovIGW8iML675aed1EU2fC"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Conflicto de Uso de la Tierra",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Conflicto de Uso de la Tierra",icon:"🧭",
     memory:{name:"Memoria Conflicto de Uso de la Tierra",id:"1DjtOk3Ec5IvxA4yyojTHf-_0C9I2akrP"},
     map:{name:"Mapa Conflicto de Uso de la Tierra",id:"17aJZRPgUGJMGECj2u430WKnLEMhQnxgg"},
     data:{name:"Base geoespacial",id:"1f7oXwAOIo5IU2lyln51AbEhHxS_ufTrl"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Aptitud Urbano Industrial",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Aptitud Urbano Industrial",icon:"🏙️",
     memory:{name:"Memoria Aptitud Urbano Industrial",id:"1ZLXPwaJ5TmoYIlAd6_EQ3JrvcD94uzAu"},
     map:{name:"Mapa Aptitud Urbano Industrial",id:"1NybQ-CnIFwzcQNK2N5csMvFqwI_vCt3Q"},
     data:{name:"Base geoespacial",id:"1eP2VuUd7vQ9s2iEA3L-xpYCFBagaFSrt"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Peligros Múltiples",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Peligros Múltiples",icon:"⚠️",
     memory:{name:"Memoria Peligros Potenciales Múltiples",id:"1nRXzxAj64GVah9Jhy8b1prBKuLAQPPic"},
     map:{name:"Mapa Peligro por Inundación y Movimiento de Masa",id:"1Txn6cHwlVeWMYmZAmQ1-zWJ5c9aGEa12"},
     data:{name:"Base geoespacial",id:"1JmFOM08ovF35fhbpYKO3gR-qfaN4vwqd"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Vulnerabilidad",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Vulnerabilidad",icon:"🏠",
     memory:{name:"Memoria Vulnerabilidad",id:"1gwxHhHnfDsNof0Ub8zTltO514QCoJQ8a"},
     map:{name:"Mapa Vulnerabilidad",id:"1r-BOEuQxG4Ycdv4RitvMIX4UxSYKbc44"},
     data:{name:"Base geoespacial",id:"1YSvifUm96z9WjDQXtCwRKtDHXennIdLr"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Valor Histórico Cultural",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Valor Histórico Cultural",icon:"🏺",
     memory:{name:"Memoria Valor Histórico Cultural",id:"1sjSvL9wScp3-w_7SEWRLshDOTLVNW9WP"},
     map:{name:"Mapa Valor Histórico Cultural",id:"1AUlsDSpw154fQzLMsGTEfKulHO_Xs04V"},
     data:{name:"Base geoespacial",id:"1KbAwYJ1rWbEeugzpmEPwU3r_vWsRsfyE"}},
 
-  {cls:"Submodelos",group:"Submodelos",study:"Potencialidades Socioeconómicas",icon:"🧩",
+  {cls:"Submodelos",group:"Submodelos",study:"Potencialidades Socioeconómicas",icon:"📈",
     memory:null,
     map:{name:"Mapa Potencialidades Socioeconómicas",id:"1kEnAwWUiVec22pF2cuEyp_hZV8V5w1cl"},
     data:{name:"Base geoespacial",id:"1qURUForI5fu5luFECC20f0fSCm8Yff76"}},
 
-  {cls:"Temáticos",group:"Físico",study:"Geología",icon:"⛰️",
+  {cls:"Temáticos",group:"Físico",study:"Geología",icon:"🪨",
     memory:{name:"Memoria Geológica",id:"1H-CcnM3WYZZc-nVUKLLMVXNcWFIACgwF"},
     map:{name:"Mapa Geológico",id:"1PvbVx1RE98yVZAO8O4Ele90bYyXcHOF9"},
     data:{name:"Base geoespacial",id:"1wxrVe2Pr1bbw0lnS5tDCDMqyjOWxVu44"}},
@@ -485,22 +829,22 @@ const studies=[
     map:{name:"Mapa Fisiografía",id:"1OjEZpryHW8kzbXfbED_3GM-wXepcVJN1"},
     data:{name:"Base geoespacial",id:"19GqKthE7Vx3Lth5dTxi1GeIGd83OlApf"}},
 
-  {cls:"Temáticos",group:"Físico",study:"Geomorfología",icon:"🏔️",
+  {cls:"Temáticos",group:"Físico",study:"Geomorfología",icon:"🌄",
     memory:{name:"Memoria Geomorfología",id:"15JW53qL9c_vbEUADKlKWFID_A0Dlxk6h"},
     map:{name:"Mapa Geomorfológico",id:"1o6RnsF2ap-YC3-q70hO-ImSUxoDqVfiA"},
     data:{name:"Base geoespacial",id:"1bJeVicz9oogzL_YRKPTMgHmf8x4fWBi4"}},
 
-  {cls:"Temáticos",group:"Físico",study:"Suelos y CUM",icon:"🟫",
+  {cls:"Temáticos",group:"Físico",study:"Suelos y CUM",icon:"🌱",
     memory:{name:"Memoria Suelos y Capacidad de Uso Mayor",id:"1aZUVtEKRlb0fhc6wV7N2wyAX5uM2z1v_"},
     map:{name:"Mapa Capacidad de Uso Mayor",id:"16wIjpaT00KwPS-mrR4baZtCQcC4uGFbf"},
     data:{name:"Base geoespacial",id:"1nTn6U8CWaNMwHmhZpHn6X-weYv8epWFs"}},
 
-  {cls:"Temáticos",group:"Biológico",study:"Clima y Zonas de Vida",icon:"🌦️",
+  {cls:"Temáticos",group:"Biológico",study:"Clima y Zonas de Vida",icon:"🌤️",
     memory:{name:"Memoria Clima y Zona de Vida",id:"1DgwLnAysYiy67W-5nulxonOgJTdn6SVN"},
     map:{name:"Mapa Clima y Zonas de Vida",id:"1HTUeJSfIuCNWUuzkw0IrS6xaweIgB_zw"},
     data:{name:"Base geoespacial",id:"1lxvpHDBPhcxWCCEx3LGrl_WUdzjC8jm9"}},
 
-  {cls:"Temáticos",group:"Biológico",study:"Fauna",icon:"🦜",
+  {cls:"Temáticos",group:"Biológico",study:"Fauna",icon:"🐆",
     memory:{name:"Memoria Fauna Silvestre",id:"1BhCxUncfrkEjqTDuntleHmfTHiGsg1tk"},
     map:{name:"Mapa Temático Fauna",id:"1EoP7ujQqG2sZYbmBBlrjEM_obVvuRCkO"},
     data:{name:"Base geoespacial",id:"15wMk87NNmkb562-FP376Nzbs3-KuOByk"}},
@@ -515,12 +859,12 @@ const studies=[
     map:{name:"Mapa Temático Forestal",id:"1xiFr3hEXjwkrfd5HQV2BBbGhtBlOGXIx"},
     data:{name:"Base geoespacial",id:"1TN3fRZxE2lwzW5RIOG-xcKwb8B08AcIu"}},
 
-  {cls:"Temáticos",group:"Sociocultural",study:"Sociocultural",icon:"👥",
+  {cls:"Temáticos",group:"Sociocultural",study:"Sociocultural",icon:"🧑🏽‍🤝‍🧑🏽",
     memory:{name:"Memoria Estudio Temático Sociocultural",id:"1Z-8OjxWRyuxmR9yTwrdoUtoa5JeOv6Ib"},
     map:{name:"Mapa Potencial Sociocultural",id:"18rZ4iMS1_l0vTkUOjpjxkr_--vfzn1Nk"},
     data:{name:"Base geoespacial",id:"1ejxCtdpVvPVL1SFwRvxUYtbDnsf93oLZ"}},
 
-  {cls:"Temáticos",group:"Socioeconómico",study:"Cobertura y Uso Actual del Territorio",icon:"🛰️",
+  {cls:"Temáticos",group:"Socioeconómico",study:"Cobertura y Uso Actual del Territorio",icon:"🌾",
     memory:{name:"Memoria Cobertura y Uso Actual del Territorio",id:"1H5VgwnKk-5mCSn4GkGLagSMYSWs0rVvR"},
     map:{name:"Mapa Cobertura y Uso Actual",id:"1-HQRhE3d75UotSEzRtLQIjs0UE-MGR4D"},
     data:{name:"Base geoespacial",id:"16y71-P4T-BHLm4D0FBUN1DdEWl4O3oEm"}},
@@ -530,7 +874,7 @@ const studies=[
     map:{name:"Mapa Potencial Socioeconómico",id:"1obrAhwLuAbeVxwnpKYx9qHoxDSMuUgiY"},
     data:{name:"Base geoespacial",id:"1syV019DVm8YPpvWF5VZ6gEAMQLKvHXNL"}},
 
-  {cls:"Temáticos",group:"Socioeconómico",study:"Turismo",icon:"🧭",
+  {cls:"Temáticos",group:"Socioeconómico",study:"Turismo",icon:"📷",
     memory:{name:"Memoria Potencialidades del Recurso Turístico",id:"1WStW823Jc2nDDKhILYgOvAT9ONndqoco"},
     map:{name:"Mapa Potencial Turístico",id:"1jJJVr795DHxXNPe1FIZsi0iidzpXeUEP"},
     data:{name:"Base geoespacial",id:"1ryLP9qttu6L_jGkAUu9WrkPd26_bB7Tq"}}
@@ -738,6 +1082,20 @@ $("reset").addEventListener("click",()=>{
 renderNormatives();
 refreshFilters();
 renderStudies();
+
+const otWelcome=document.getElementById("otWelcome");
+function closeOtWelcome(){
+  otWelcome.classList.add("hidden");
+}
+document.getElementById("otWelcomeClose").addEventListener("click",closeOtWelcome);
+document.getElementById("otWelcomeEnter").addEventListener("click",closeOtWelcome);
+otWelcome.addEventListener("click",e=>{
+  if(e.target===otWelcome) closeOtWelcome();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && !otWelcome.classList.contains("hidden")) closeOtWelcome();
+});
+
 </script>
 </body>
 </html>
