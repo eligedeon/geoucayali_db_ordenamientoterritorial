@@ -263,6 +263,51 @@
       }
     }
 
+  
+    /* Pestañas principales más visibles */
+    .library-panel .segmented{
+      gap:14px;
+      padding:18px 20px;
+      align-items:center;
+    }
+    .library-panel .segmented button{
+      font-size:18px;
+      font-weight:900;
+      letter-spacing:.02em;
+      padding:13px 22px;
+      min-height:50px;
+      border-radius:999px;
+      color:#36584a;
+      border:1.5px solid #cfded6;
+      background:#ffffff;
+      box-shadow:0 2px 8px rgba(15,76,50,.05);
+    }
+    .library-panel .segmented button.active{
+      background:#08783f;
+      border-color:#08783f;
+      color:#ffffff;
+      box-shadow:0 4px 12px rgba(8,120,63,.18);
+    }
+    .library-panel .segmented button:hover{
+      border-color:#8fbaa4;
+      background:#f7fbf8;
+    }
+    .library-panel .segmented button.active:hover{
+      background:#076d39;
+    }
+
+    @media(max-width:700px){
+      .library-panel .segmented{
+        gap:9px;
+        padding:14px;
+      }
+      .library-panel .segmented button{
+        font-size:15px;
+        padding:11px 15px;
+        min-height:46px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -297,9 +342,8 @@
     </div>
 
     <div class="segmented" id="classTabs">
-      <button class="active" data-class="">Todos</button>
-      <button data-class="Temáticos">Temáticos</button>
-      <button data-class="Submodelos">Submodelos</button>
+      <button class="active" data-class="Temáticos">TEMÁTICOS</button>
+      <button data-class="Submodelos">SUBMODELOS</button>
       <button data-class="ZEE">ZEE</button>
     </div>
 
@@ -367,7 +411,7 @@
       <iframe id="mapFrame" title="Visor de mapa"></iframe>
     </div>
     <div class="viewer-note">
-      <span><b>Fuente:</b> Proyecto Ordenamiento Territorial - Dirección de Gestión del Territorio - GOREU</span>
+      <span><b>Fuente temporal:</b> Google Drive institucional. En proceso de migración al servidor GeoUcayali.</span>
       <a id="mapDownload" class="btn ghost" target="_blank" rel="noopener">⬇ Descargar mapa</a>
     </div>
   </section>
@@ -607,7 +651,7 @@ $("mapFrame").addEventListener("load",()=>$("loading").classList.add("hide"));
 mapSelect.addEventListener("change",e=>loadMap(+e.target.value));
 loadMap(0);
 
-let activeClass="";
+let activeClass="Temáticos";
 function unique(arr){return [...new Set(arr)].sort((a,b)=>a.localeCompare(b,"es"))}
 function fillSelect(el,values,allLabel){
   el.innerHTML=`<option value="">${allLabel}</option>`+unique(values).map(v=>`<option>${v}</option>`).join("");
@@ -687,7 +731,7 @@ $("groupFilter").addEventListener("change",renderStudies);
 $("studyFilter").addEventListener("change",renderStudies);
 $("search").addEventListener("input",renderStudies);
 $("reset").addEventListener("click",()=>{
-  activeClass="";
+  activeClass="Temáticos";
   $("classTabs").querySelectorAll("button").forEach((b,i)=>b.classList.toggle("active",i===0));
   $("search").value="";
   refreshFilters();
